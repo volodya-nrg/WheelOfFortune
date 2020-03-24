@@ -1,0 +1,194 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* -------------------- tags -------------------- */
+body#admin{
+	background-image: none;
+	background-color: whitesmoke;
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: cover;
+}
+
+/* -------------------- ids -------------------- */
+#top-panel{
+	background-color: darkblue;
+	color:white;
+}
+#desk {
+	background-color: gray;
+}
+	#desk .desk-row {
+		display: table;
+		background-color: transparent;
+		margin: 0 auto;
+	}
+	#desk .desk-cell {
+		position: relative;
+		float: left;
+		margin: 2px;
+		width: 30px;
+		height: 35px;
+		background-color: whitesmoke;
+	}
+	#desk .desk-cell-absolute {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: inherit;
+		height: inherit;
+		background-color: lightgray;
+	}
+	#desk .desc-cell-empty {
+		background-color: transparent;
+	}
+	#desk .desk-cell-mask {
+		background-color: lightgreen;
+		z-index: 5;
+	}
+	#desk .desk-cell-char {
+		background-color: white;
+		color: #333;
+		text-align: center;
+		font-size: 20px;
+		line-height: 35px;
+		z-index: 4;
+	}
+#wheel {
+	position: relative;
+	display: inline-block;
+	background-color: gray;
+}
+	#wheel .wheel-metka {
+		position: absolute;
+		top: 0;
+		left: 100px;
+		z-index: 3;
+		width: 1px;
+		height: 100px;
+		background-color: red;
+	}
+	/* причесываем круг */
+	#wheel .wheel-wraper {
+		position: relative;
+		width: 200px;
+		height: 200px;
+		overflow: hidden;
+		border-radius: 50%;
+		border: red solid 2px;
+		background-color: black;
+	}
+	/* это точка, относительно ее выстраиваются сектора */
+	#wheel .wheel-wraper .wheel-center {
+		position: relative;
+		top: 97.5px;
+		left: 97.5px;
+		width: 0px;
+		height: 0px;
+		border-radius: 50%;
+		background-color: red;
+	}
+	#wheel .wheel-wraper .wheel-sector {
+		position: absolute;
+		bottom: 0;
+		left: -19px;
+		width: 0;
+		height: 0;
+		transform: rotate(0deg);
+		transform-origin: center bottom;
+		border-left: 20px solid transparent;
+		border-right: 20px solid transparent;
+		background-color: transparent;
+		z-index: 1;
+		border-top-width: 100px;
+		border-top-style: solid;
+		border-top-color: white;
+	}
+	#wheel .wheel-wraper .wheel-sector:hover {
+		border-top-color: red;
+	}
+	#wheel .wheel-wraper .wheel-sector .wheel-sector-text-wraper {
+		position: absolute;
+		top: -75px;
+		left: calc(-1 * 50px / 2);
+		width: 50px;
+		height: 16px;
+		line-height: 16px;
+		background-color: whitesmoke;
+		color: #333;
+		font-size: 12px;
+		text-align: right;
+		transform: rotate(-90deg);
+		z-index: 2;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+	}
+/* -------------------- classes -------------------- */
+.prize-item{
+	display:inline-block;
+	margin: 5px;
+	text-align: center;
+	background-color: white;
+	color: #333;
+	padding: 10px;
+}
+.text-white{
+	color: white;
+}
+.bg-white{
+	background-color: white;
+}
+#alphabit{
+	display: table;
+	padding: 5px;
+	background-color: gray;
+}
+.alphabit-item{
+	width: 16px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	margin-right: 2px;
+	background-color: floralwhite;
+	cursor: pointer;
+}
+	.alphabit-item.active, .alphabit-item:hover{
+		background-color: pink;	
+	}
+	.alphabit-item.disabled{
+		background-color: lightgray;
+		cursor: default;	
+	}
+.btn-file{
+}
+	.btn-file input[type=file]{
+		display:none; /* нужно именно так скрывать */
+	}
+.btn{
+	box-shadow: none;
+}
+a{
+	color: blue;	
+}
+a:hover, a:focus, a.active{
+	color: red;
+}
+.nav-tabs > li > a {
+   color: #454545;
+}
+.tab-pane{
+	border: lightgray solid 1px;
+	border-top: 0;
+	padding: 10px;
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}

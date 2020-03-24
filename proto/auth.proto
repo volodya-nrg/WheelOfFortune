@@ -1,0 +1,23 @@
+syntax = "proto2"; 
+
+package WORServer.Api.Auth; 
+
+message Request { 
+	optional string		ApiToken = 1; 
+	required SocialType Social = 2; 
+	required string		UserId = 3; 
+	required string		AccessToken = 4;
+	optional string		Email = 5;
+} 
+enum SocialType { 
+	Facebook = 0; 
+} 
+enum AuthCode { 
+	Good = 0; 
+	Fail = 1; 
+} 
+message Response { 
+	optional string		ApiToken = 1; 
+	required AuthCode	Status = 2; 
+	required string		Message = 3; 
+}

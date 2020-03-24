@@ -1,0 +1,64 @@
+syntax = "proto2";
+
+package WORServer.Api.Game.Next; 
+
+enum AnswerType { 
+	Letter = 0; 
+	WholeWord = 1; 
+	RotateWheel = 2; 
+} 
+enum ResponseCode { 
+	Good = 0; 
+	Fail = 1; 
+	NotEnoughMoney = 2; 
+	AlreadyPlaying = 3; 
+	TimeLimit = 4; 
+	NotStageVowel = 5; 
+} 
+enum GameState { 
+	Playing = 0; 
+	Winner = 1; 
+	Loser = 2; 
+	BonusGame = 3; 
+} 
+enum ModifierCode { 
+	None = 0; 
+	Luck = 1; 
+	Prize = 2; 
+} 
+ 
+message Request { 
+	required string ApiToken = 1; 
+	required int32 GameId = 2; 
+	required AnswerType AnswerCode = 3; 
+	optional string Letter = 4; 
+	repeated InfoCurrentCell Rows = 5; 
+} 
+message RuntimeData { 
+	required int32 CountStep = 1; 
+	required int32 SectorIndex = 2; 
+	required GameState Status = 3; 
+	required int32 TimeLeft = 4; 
+	required int32 CountScore = 5; 
+	required int32 CountLives = 6; 
+	repeated ModifierInfo Modifiers = 7; 
+	repeated InfoCurrentCell Letters = 8; 
+	required bool IsRequestBonusGame = 9; 
+	repeated string PressedLetters = 10; 
+	optional bool IsAnimateWheel = 11 [default = false]; 
+	optional bool IsVowelsAvailable = 12 [default = false]; 
+	optional bool IsConsonantsAvailable = 13 [default = false]; 
+	optional bool IsRotateAvailable = 14 [default = false]; 
+	optional bool IsWordAvailable = 15 [default = false]; 
+}
+message InfoCurrentCell { 
+	repeated string CurrentOpenedChars = 1; 
+} 
+message ModifierInfo { 
+	required ModifierCode Code = 1; 
+	required int32 Count = 2; 
+} 
+message Response { 
+	required ResponseCode Status = 1; 
+	optional RuntimeData Game = 2;
+} 

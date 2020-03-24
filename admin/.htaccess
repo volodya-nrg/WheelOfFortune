@@ -1,0 +1,33 @@
+# кодировка по умолчанию
+AddDefaultCharset UTF-8
+
+DirectoryIndex index.php
+
+# переходить по ссылочным файлам
+Options +FollowSymlinks
+
+# не показывать листинг в пустой папке
+Options -Indexes
+
+#защищаем типы файлов
+<Files ~ "\.(htaccess|htpasswd|ini|fla|psd|log|sh)$">
+	order allow,deny
+	deny from all
+</Files>
+
+RewriteEngine On
+RewriteBase /
+
+#редирект с www на без него
+RewriteCond %{HTTP_HOST} ^www.(.*) [NC]
+RewriteRule ^/?(.*) http://%1/$1 [L,R=permanent]
+
+# убираем последний слеш
+RewriteCond %{HTTP_HOST} (.*)
+RewriteCond %{REQUEST_URI} /$ [NC]
+RewriteRule ^(.*)(/)$ $1 [L,R=301]
+
+# весь url перенаправляем на index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /admin/index.php [L,QSA]

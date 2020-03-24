@@ -1,0 +1,29 @@
+syntax = "proto2"; 
+
+package WORServer.Api.Leaderboard.List; 
+
+enum LeaderboardCode { 
+	TOP_WEEK = 0; 
+	TOP_MONTH = 1; 
+	TOP_ALL = 2; 
+}
+enum ResponseCode { 
+	Good = 0; 
+	Fail = 1; 
+	NotEnoughMoney = 2; 
+	AlreadyPlaying = 3; 
+	TimeLimit = 4; 
+} 
+message Request { 
+	required string ApiToken = 1; 
+	required LeaderboardCode BoardCode = 2;
+} 
+message Response { 
+	required ResponseCode Status = 1; 
+	repeated UserInfo Table = 2; 
+}
+message UserInfo { 
+	required int32 Id = 1; 
+	required string Name = 2; 
+	required int32 Score = 3; 
+}
